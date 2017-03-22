@@ -1,5 +1,17 @@
+appdirs==1.4.3
+Babel==2.3.4
 dj-database-url==0.4.1
 Django==1.10.4
+django-phonenumber-field==1.2.0
+django-twilio==0.8.0
 gunicorn==19.6.0
+httplib2==0.10.3
+packaging==16.8
+phonenumberslite==8.3.3
 psycopg2==2.6.2
+pyparsing==2.2.0
+PySocks==1.6.6
+pytz==2016.10
+six==1.10.0
+twilio==5.7.0
 whitenoise==3.2
