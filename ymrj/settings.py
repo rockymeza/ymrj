@@ -30,6 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_twilio',
+
+    'ingress',
+    'egress',
+    'periods',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +128,12 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Celery
+CELERY_BROKER_URL = os.environ['CLOUDAMQP_URL']
+
+# Twilio
+TWILIO_MESSAGING_SERVICE_ID = os.environ.get('TWILIO_MESSAGING_SERVICE_ID')
+TWILIO_FROM_NUMBER = os.environ.get('TWILIO_FROM_NUMBER')
+
+assert TWILIO_MESSAGING_SERVICE_ID or TWILIO_FROM_NUMBER
