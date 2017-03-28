@@ -22,7 +22,7 @@ def process_incoming_message(id):
             number=message.from_number.as_e164,
             start_date=datetime.date.today(),
         )
-    elif intent is Intent.start_period:
+    elif intent is Intent.end_period:
         end_period.delay(
             number=message.from_number.as_e164,
             end_date=datetime.date.today(),
