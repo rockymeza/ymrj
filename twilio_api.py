@@ -1,6 +1,10 @@
+import logging
+
 from django.conf import settings
 from django_twilio.client import twilio_client
 from twilio.exceptions import TwilioException
+
+log = logging.getLogger()
 
 
 def send_sms(to, body):
@@ -18,4 +22,4 @@ def send_sms(to, body):
             **options
         )
     except TwilioException as e:
-        print(e)
+        log.error(e, exc_info=True)

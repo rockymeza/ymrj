@@ -6,3 +6,4 @@ whitenoise==3.2
 django-twilio==0.8.0
 celery==4.0.2
 python-dateutil==2.6.0
+raven==6.0.0
