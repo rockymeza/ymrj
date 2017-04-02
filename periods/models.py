@@ -15,6 +15,9 @@ class Period(models.Model):
 
     objects = PeriodQuerySet.as_manager()
 
+    class Meta:
+        ordering = ('-start_date',)
+
     def __str__(self):
         if self.end_date:
             format = '{number}: from {start} to {end}'
