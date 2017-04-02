@@ -133,7 +133,7 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Celery
-CELERY_BROKER_URL = os.environ['CLOUDAMQP_URL']
+CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', None)
 
 # Twilio
 TWILIO_MESSAGING_SERVICE_ID = os.environ.get('TWILIO_MESSAGING_SERVICE_ID')
