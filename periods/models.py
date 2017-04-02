@@ -16,7 +16,12 @@ class Period(models.Model):
     objects = PeriodQuerySet.as_manager()
 
     def __str__(self):
-        return '{start}-{end}'.format(
+        if self.end_date:
+            format = '{number}: from {start} to {end}'
+        else:
+            format = '{number}: started {start}'
+        return format.format(
+            number=self.phone_number,
             start=self.start_date,
             end=self.end_date,
         )

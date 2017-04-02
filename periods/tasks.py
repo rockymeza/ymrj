@@ -10,6 +10,11 @@ from .models import Period
 log = logging.getLogger()
 
 
+START_PERIOD_BODY = """
+我来了呀！（{start_date}）
+""".strip()
+
+
 @shared_task
 def start_period(number, start_date):
     log.info('start_period %s %s', number, start_date)
@@ -20,8 +25,15 @@ def start_period(number, start_date):
     )
     send_sms.delay(
         number=number,
-        body='来了呀！',
+        body=START_PERIOD_BODY.format(
+            start_date=start_date,
+        ),
     )
+
+
+END_PERIOD_BODY = """
+拜拜！（{end_date}）
+""".strip()
 
 
 @shared_task
@@ -33,11 +45,13 @@ def end_period(number, end_date):
     except IndexError:
         send_sms.delay(
             number=number,
-            body='怎么还没来就走了呢',
+            body='怎么还没来就走了呢？',
         )
     else:
         period.finish(end_date)
         send_sms.delay(
             number=number,
-            body='拜拜！',
+            body=END_PERIOD_BODY.format(
+                end_date=end_date,
+            ),
         )
