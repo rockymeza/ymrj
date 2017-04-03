@@ -139,7 +139,9 @@ CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', None)
 TWILIO_MESSAGING_SERVICE_ID = os.environ.get('TWILIO_MESSAGING_SERVICE_ID')
 TWILIO_FROM_NUMBER = os.environ.get('TWILIO_FROM_NUMBER')
 
-assert TWILIO_MESSAGING_SERVICE_ID or TWILIO_FROM_NUMBER
+TWILIO_ENABLED = bool(TWILIO_MESSAGING_SERVICE_ID or TWILIO_FROM_NUMBER)
+if not TWILIO_ENABLED:
+    print('Twilio is disabled because there was no configuration for it')
 
 # Sentry
 RAVEN_CONFIG = {
