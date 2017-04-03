@@ -2,6 +2,10 @@ machine:
   python:
     version: 3.5.2
 
+dependencies:
+  post:
+    - pip install git+https://github.com/micktwomey/pytest-circleci
+
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/pytest
