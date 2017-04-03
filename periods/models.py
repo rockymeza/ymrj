@@ -32,3 +32,17 @@ class Period(models.Model):
     def finish(self, end_date):
         self.end_date = end_date
         self.save(update_fields=['end_date'])
+
+
+class Reminder(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    phone_number = PhoneNumberField()
+    estimated_start_date = models.DateField()
+
+    def __str__(self):
+        format = '{number}: expected_start_date: {start}, sent at: {sent}'
+        return format.format(
+            number=self.phone_number,
+            start=self.estimated_start_date,
+            sent=self.created_at,
+        )

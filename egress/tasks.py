@@ -3,11 +3,12 @@ import logging
 from celery import shared_task
 from django.conf import settings
 
-import twilio_api
-
 from .models import OutgoingMessage
 
 log = logging.getLogger()
+
+if settings.TWILIO_ENABLED:
+    import twilio_api
 
 
 @shared_task
